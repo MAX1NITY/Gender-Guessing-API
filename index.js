@@ -5,7 +5,7 @@ const cors = require('cors');
 app.use(cors());
 
 app.get(['/check-gender', '/check-gender/:endpoint*'], async (req, res) => {
-    const nameToSearch = req.params.endpoint
+    const nameToSearch = req.params.endpoint || "";
     const cleanName = nameToSearch ? nameToSearch.split('/')[0] : "";
 
     try{
