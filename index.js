@@ -4,7 +4,6 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    
     if (req.method === 'OPTIONS') {
         return res.status(200).end();
     }
@@ -12,6 +11,9 @@ app.use((req, res, next) => {
 });
 
 app.get('/check-gender/:name', async (req, res) => {
+    
+    res.header('Access-Control-Allow-Origin', '*');
+
     try{
         const rawName = req.params.name || "";
         const cleanName = rawName.split('/')[0];
