@@ -4,7 +4,7 @@ const cors = require('cors');
 
 app.use(cors());
 
-app.get('/check-gender/(.*)', async (req, res) => {
+app.get('/^\/check-gender\/(.*)/', async (req, res) => {
     try{
         const nameToSearch = req.params || "";
         const cleanName = nameToSearch.split('/')[0];
