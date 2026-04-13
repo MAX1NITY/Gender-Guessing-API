@@ -4,12 +4,10 @@ const cors = require('cors');
 
 app.use(cors());
 
-app.get('/check-gender', async (req, res) => {
+app.get('/check-gender/:name', async (req, res) => {
     try{
-        const fullPath = req.originalUrl.split('?')[0];
-        const nameToSearch = fullPath.split('/');
-        const checkGenderIndex = nameToSearch.indexOf('check-gender');
-        const cleanName = nameToSearch[checkGenderIndex + 1] || "";
+        const rawName = req.params.name || "";
+        const cleanName = rawName.split('/')[0];
         const response = await fetch(`https://api.genderize.io?name=${cleanName}`);
 
         const data = await response.json();
