@@ -4,9 +4,9 @@ const cors = require('cors');
 
 app.use(cors());
 
-app.get(['/check-gender', '/check-gender/:endpoint(.*)'], async (req, res) => {
+app.get('/check-gender/(.*)', async (req, res) => {
     try{
-        const nameToSearch = req.params.endpoint || "";
+        const nameToSearch = req.params || "";
         const cleanName = nameToSearch.split('/')[0];
         const response = await fetch(`https://api.genderize.io?name=${cleanName}`);
 
